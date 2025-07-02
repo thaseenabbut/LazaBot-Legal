@@ -30,7 +30,7 @@ LazaBot is a robust multi-purpose Discord bot packed with moderation tools, util
 
 To bring LazaBot into your server:
 
-1. [Invite LazaBot to your server]([https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot&permissions=8](https://discord.com/discovery/applications/938803094291116082))
+1. [Invite LazaBot](https://discord.com/discovery/applications/938803094291116082) to your server.
 2. Run `/setup` commands to configure core systems.
 3. Use `/help` or `!help` to view available features.
 4. Join the [Support Server](https://discord.gg/pZbC5zJSCN) for assistance and tips!
