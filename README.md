@@ -21,6 +21,7 @@ LazaBot is a robust multi-purpose Discord bot packed with moderation tools, util
 - **Giveaways & Games** – Create engaging giveaways and fun mini-games.
 - **Simple Verification** – Prevent raids with a clean verification system.
 - **Welcome & Leave System** – Greet new members and say goodbye in style.
+- **Reaction Roles** - Assign roles to members by reacting to the message via reactions
 - **Auto Roles** – Automatically assign roles to new users.
 - **Custom Prefix & Logging Setup** – Fully configurable via easy-to-use commands.
 
@@ -49,6 +50,7 @@ LazaBot respects your data and only stores what is essential to operate its serv
 ## Support
 
 - **Support Server:** [Join our Discord](https://discord.gg/pZbC5zJSCN)
+- **Top.gg:** [Vote LazaBot on Top.gg](https://top.gg/bot/938803094291116082)
 
 ---
 
