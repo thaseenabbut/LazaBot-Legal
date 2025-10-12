@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazaBot - About Features</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            color: #2c3e50;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ AccessNode — LazaBot’s Advanced Permission Handler System</h1>
+
+    <h2>Overview</h2>
+    <p>AccessNode is LazaBot’s intelligent permission and execution management system.  
+    It’s designed to <strong>prevent crashes</strong>, <strong>handle permission issues gracefully</strong>, and <strong>provide detailed feedback</strong> whenever a command cannot run — ensuring LazaBot remains reliable in every situation.</p>
+    <p>Whether you’re a small server owner or managing a large community, AccessNode keeps your moderation and utility commands running safely, no matter what.</p>
+
+    <hr>
+
+    <h2>⚙️ Key Highlights</h2>
+    <table>
+        <tr><th>Feature</th><th>Description</th></tr>
+        <tr><td><strong>Crash Prevention</strong></td><td>Ensures LazaBot never crashes due to missing permissions.</td></tr>
+        <tr><td><strong>Smart Validation</strong></td><td>Checks user, bot, and channel permissions automatically.</td></tr>
+        <tr><td><strong>Role Hierarchy Safety</strong></td><td>Prevents actions that violate Discord’s role hierarchy.</td></tr>
+        <tr><td><strong>Detailed Error Feedback</strong></td><td>Sends clean, descriptive error messages with embeds.</td></tr>
+        <tr><td><strong>Middleware Integration</strong></td><td>Works behind the scenes in every command execution.</td></tr>
+        <tr><td><strong>Error Logging & Monitoring</strong></td><td>Tracks permission issues, command stats, and more.</td></tr>
+        <tr><td><strong>Graceful Fallbacks</strong></td><td>Automatically falls back to simpler validation if something goes wrong.</td></tr>
+    </table>
+
+    <h2>🧠 How AccessNode Works</h2>
+    <p>AccessNode is composed of four major systems working together:</p>
+
+    <h3>1. PermissionHandler</h3>
+    <p>Handles the heavy lifting of validating all permission layers:</p>
+    <ul>
+        <li>Member and bot permission checks</li>
+        <li>Channel-specific validation</li>
+        <li>Role hierarchy enforcement</li>
+        <li>Moderation action validation</li>
+        <li>Auto-generated error embeds</li>
+    </ul>
+
+    <h3>2. CommandPermissionWrapper</h3>
+    <p>A lightweight wrapper that links permission validation with command execution:</p>
+    <ul>
+        <li>Safely runs commands after passing permission checks</li>
+        <li>Automatically reports missing permissions</li>
+        <li>Tracks execution stats</li>
+    </ul>
+
+    <h3>3. CommandMiddleware</h3>
+    <p>Adds automatic permission checking into command flow:</p>
+    <ul>
+        <li>Middleware stack for validation and logging</li>
+        <li>Automatic error replies when validation fails</li>
+    </ul>
+
+    <h3>4. CommandExecutor</h3>
+    <p>The final layer that actually runs your command safely:</p>
+    <ul>
+        <li>Built-in validation</li>
+        <li>Error handling & recovery</li>
+        <li>Execution history and monitoring</li>
+    </ul>
+
+    <h2>🧩 Behind the Scenes</h2>
+    <p>AccessNode sits between your command and Discord’s API.  
+    When a command is triggered:</p>
+    <ol>
+        <li>It checks all permission requirements (user, bot, and channel).</li>
+        <li>Validates role hierarchy.</li>
+        <li>Executes the command only if all checks pass.</li>
+        <li>If not, it stops the execution and sends a detailed, non-crashing error embed.</li>
+        <li>Every action and error is logged for monitoring and debugging.</li>
+    </ol>
+
+    <h2>📊 Error Handling & Recovery</h2>
+    <p>AccessNode ensures every issue is handled safely:</p>
+
+    <h3>🟥 Permission Errors</h3>
+    <p>Displays a detailed embed explaining what permission is missing and how to fix it.</p>
+
+    <h3>🟨 Execution Errors</h3>
+    <p>If a command fails, AccessNode captures the error and logs it internally — keeping the bot stable.</p>
+
+    <h3>🟩 Graceful Fallbacks</h3>
+    <p>If something goes wrong while sending embeds or replies, AccessNode automatically falls back to a plain message so your users always receive feedback.</p>
+
+    <h2>🔍 Monitoring & Debugging</h2>
+    <p>AccessNode continuously tracks:</p>
+    <ul>
+        <li><strong>Execution Statistics</strong> (success rate, average duration, command history)</li>
+        <li><strong>Error Logs</strong> (detailed list of recent permission issues)</li>
+        <li><strong>Performance Metrics</strong> (to identify slow commands or repeated failures)</li>
+    </ul>
+    <p>Developers can enable <strong>debug mode</strong> for deeper insights during testing.</p>
+
+    <h2>🧱 Integration in LazaBot</h2>
+    <p>AccessNode is deeply integrated into every LazaBot system:</p>
+    <ul>
+        <li><strong>Moderation Commands</strong> → Role and permission validation.</li>
+        <li><strong>ActionTags</strong> → Reliable, logged moderation tracking.</li>
+        <li><strong>FlowControl</strong> → Ensures correct channel permissions.</li>
+        <li><strong>Ticket & Logging Systems</strong> → Automatically validates bot perms before sending messages.</li>
+    </ul>
+    <p>AccessNode is what makes LazaBot <strong>fail-safe</strong>. Every command, from a simple `/ban` to a complex setup command, goes through AccessNode first.</p>
+
+    <h2>✅ Why AccessNode Matters</h2>
+    <ul>
+        <li>Keeps LazaBot running smoothly even in servers with complicated role structures.</li>
+        <li>Provides a consistent user experience when permission errors occur.</li>
+        <li>Gives developers & server owners detailed feedback instead of silent failures.</li>
+        <li>Makes moderation commands truly <strong>crash-proof</strong>.</li>
+    </ul>
+
+    <h2>🚀 In Short</h2>
+    <blockquote>
+        <p><strong>AccessNode is LazaBot’s brain for safe command execution.</strong>  
+        It validates, protects, monitors, and recovers — ensuring your commands always run smoothly, or fail gracefully.</p>
+    </blockquote>
+</body>
+</html>
