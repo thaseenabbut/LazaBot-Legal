@@ -6,7 +6,7 @@ A powerful and modular Discord bot Designed to assist Discord servers around the
 
 ## About LazaBot
 
-LazaBot is a robust multi-purpose Discord bot packed with moderation tools, utility systems, and dynamic features to help server owners and moderators maintain a smooth and vibrant community. Whether your server is small or scaling, LazaBot has the systems to support it.
+LazaBot is Designed to assist Discord servers with AutoMod, Leveling, Giveaways, Event-Based AutoRoles, Reaction Roles, StarBoard and dynamic features to help server owners and moderators maintain a smooth and vibrant community. Whether your server is small or scaling, LazaBot has the systems to support it.
 
 ---
 
