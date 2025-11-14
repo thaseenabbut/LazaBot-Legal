@@ -1,155 +1,181 @@
-<section style="padding: 40px; max-width: 900px; margin: auto; font-family: 'Inter', sans-serif; color: #e6e6e6;">
+<!-- SCOPED CSS to prevent GitHub Pages from overriding styles -->
+<style>
+#lazadocs * {
+    box-sizing: border-box;
+    color: #e6e6e6 !important;
+    opacity: 1 !important;
+    background: transparent;
+    font-family: "Inter", sans-serif;
+}
 
-    <!-- Feature Header -->
-    <div style="margin-bottom: 35px;">
-        <h1 style="font-size: 36px; font-weight: 800; margin: 0;">ActionTag</h1>
-        <p style="font-size: 18px; margin-top: 10px; opacity: 0.85;">
-            LazaBot’s unique moderation identifier system that brings structure, clarity, and
-            full traceability to every moderation action.
-        </p>
-    </div>
+/* Layout containers */
+#lazadocs .section {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+}
 
+/* Feature cards */
+#lazadocs .feature-card {
+    background: #1a1a1a !important;
+    border: 1px solid #2b2b2b !important;
+    padding: 18px 20px;
+    border-radius: 12px;
+}
+
+/* Grid layout for benefits */
+#lazadocs .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Mobile fix */
+@media(max-width: 700px) {
+    #lazadocs .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Highlight card (big one) */
+#lazadocs .highlight {
+    background: #1a1a1a !important;
+    border: 1px solid #2b2b2b !important;
+    padding: 20px 25px;
+    border-radius: 12px;
+}
+
+/* Steps left border */
+#lazadocs .step {
+    background: #1a1a1a !important;
+    border-left: 4px solid #ffd267;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 15px;
+}
+
+/* Code blocks */
+#lazadocs code {
+    background: #141414 !important;
+    border: 1px solid #2b2b2b !important;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    display: inline-block;
+}
+
+/* Titles */
+#lazadocs h1 {
+    font-size: 36px;
+    font-weight: 800;
+}
+#lazadocs h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 40px;
+}
+#lazadocs h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+</style>
+
+
+<div id="lazadocs">
+
+<section class="section">
+
+    <!-- Header -->
+    <h1>ActionTag</h1>
+    <p style="font-size: 18px; margin-top: 10px;">
+        LazaBot’s unique moderation identifier system that brings structure, clarity, and
+        full traceability to every moderation action.
+    </p>
 
     <!-- Highlight Card -->
-    <div style="
-        background: #1a1a1a;
-        padding: 20px 25px;
-        border-radius: 12px;
-        border: 1px solid #2b2b2b;
-        margin-bottom: 35px;">
-        <h3 style="font-size: 20px; margin: 0 0 12px 0; font-weight: 700;">What is ActionTag?</h3>
-        <p style="font-size: 16px; line-height: 1.7; margin: 0;">
-            Every moderation action performed by LazaBot generates a unique identifier called an
-            <strong>ActionTag</strong>. This tag allows moderators to easily locate, reference, and review
-            the full details of any action — even weeks or months later.
+    <div class="highlight">
+        <h3>What is ActionTag?</h3>
+        <p style="font-size: 16px; line-height: 1.7;">
+            Every moderation action performed by LazaBot generates a unique identifier
+            called an <strong>ActionTag</strong>. Moderators can quickly locate, reference, and review the
+            full details of any action — even months later.
         </p>
     </div>
 
+    <!-- Key Benefits -->
+    <h2>Key Benefits</h2>
 
-    <!-- Section: Key Benefits -->
-    <h2 style="font-size: 26px; font-weight: 700; margin-top: 40px;">Key Benefits</h2>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border: 1px solid #2b2b2b;">
-            <h3 style="font-size: 18px; margin-bottom: 8px;">Unique Identifier</h3>
-            <p style="font-size: 15px; opacity: 0.9;">
-                Every moderation action receives a unique ActionTag — no duplicates, always traceable.
-            </p>
+    <div class="grid">
+        <div class="feature-card">
+            <h3>Unique Identifier</h3>
+            <p>Every moderation action receives a unique ActionTag — no duplicates, always traceable.</p>
         </div>
 
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border: 1px solid #2b2b2b;">
-            <h3 style="font-size: 18px; margin-bottom: 8px;">Improved Logging</h3>
-            <p style="font-size: 15px; opacity: 0.9;">
-                Logs become cleaner, more organized, and easier to filter and search.
-            </p>
+        <div class="feature-card">
+            <h3>Improved Logging</h3>
+            <p>Logs become cleaner, more organized, and easier to filter and search.</p>
         </div>
 
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border: 1px solid #2b2b2b;">
-            <h3 style="font-size: 18px; margin-bottom: 8px;">Transparency</h3>
-            <p style="font-size: 15px; opacity: 0.9;">
-                ActionTags can be shared with users for inquiries or appeals, improving trust.
-            </p>
+        <div class="feature-card">
+            <h3>Transparency</h3>
+            <p>ActionTags can be shared with users for appeals or inquiries.</p>
         </div>
 
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border: 1px solid #2b2b2b;">
-            <h3 style="font-size: 18px; margin-bottom: 8px;">Professional Moderation</h3>
-            <p style="font-size: 15px; opacity: 0.9;">
-                Brings a structured, industry-standard workflow to your moderation team.
-            </p>
+        <div class="feature-card">
+            <h3>Professional Moderation</h3>
+            <p>Brings a structured, industry-level workflow to your moderation team.</p>
         </div>
     </div>
 
+    <!-- Format -->
+    <h2>ActionTag Format</h2>
 
-    <!-- Section: Format -->
-    <h2 style="font-size: 26px; font-weight: 700; margin-top: 50px;">ActionTag Format</h2>
+    <p style="font-size: 17px;">Each ActionTag follows a consistent format:</p>
 
-    <p style="font-size: 17px; line-height: 1.7;">
-        Each ActionTag follows a structured and consistent format:
-    </p>
+    <code>ACTION-YYYYMMDD-XXXX</code>
 
-    <code style="
-        background: #141414;
-        padding: 12px 16px;
-        border-radius: 8px;
-        display: inline-block;
-        font-size: 15px;
-        border: 1px solid #2b2b2b;">
-        ACTION-YYYYMMDD-XXXX
-    </code>
+    <p style="margin-top: 10px; font-size: 16px;">Example:</p>
 
-    <p style="margin-top: 10px; font-size: 16px;">
-        Example:
-    </p>
+    <code>ACTION-20250117-1234</code>
 
-    <code style="
-        background: #141414;
-        padding: 12px 16px;
-        border-radius: 8px;
-        display: inline-block;
-        font-size: 15px;
-        border: 1px solid #2b2b2b;">
-        ACTION-20250117-1234
-    </code>
+    <!-- Steps -->
+    <h2>How ActionTag Works</h2>
 
-
-    <!-- Section: How it Works -->
-    <h2 style="font-size: 26px; font-weight: 700; margin-top: 50px;">How ActionTag Works</h2>
-
-    <div style="margin-top: 20px;">
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border-left: 4px solid #ffd267; margin-bottom: 15px;">
-            <strong>1. Action Occurs</strong>
-            <p style="margin: 8px 0 0 0; line-height: 1.6;">
-                A moderation command is executed (warn, mute, kick, ban, etc.).
-            </p>
-        </div>
-
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border-left: 4px solid #ffd267; margin-bottom: 15px;">
-            <strong>2. Tag Generated</strong>
-            <p style="margin: 8px 0 0 0; line-height: 1.6;">
-                LazaBot automatically generates a timestamp-based ActionTag.
-            </p>
-        </div>
-
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border-left: 4px solid #ffd267; margin-bottom: 15px;">
-            <strong>3. Logged in System</strong>
-            <p style="margin: 8px 0 0 0; line-height: 1.6;">
-                The action is stored in LazaBot’s internal logs for later review.
-            </p>
-        </div>
-
-        <div style="background: #1a1a1a; padding: 18px 20px; border-radius: 12px; border-left: 4px solid #ffd267;">
-            <strong>4. View Anytime</strong>
-            <p style="margin: 8px 0 0 0; line-height: 1.6;">
-                Use the command below to retrieve the full action details.
-            </p>
-        </div>
+    <div class="step">
+        <strong>1. Action Occurs</strong>
+        <p>A moderation command is executed (warn, mute, kick, ban, etc.).</p>
     </div>
 
+    <div class="step">
+        <strong>2. Tag Generated</strong>
+        <p>LazaBot automatically generates a timestamp-based ActionTag.</p>
+    </div>
 
-    <!-- Section: Command -->
-    <h2 style="font-size: 26px; font-weight: 700; margin-top: 50px;">Viewing an ActionTag</h2>
+    <div class="step">
+        <strong>3. Logged in System</strong>
+        <p>The action is stored in LazaBot’s internal logs for review.</p>
+    </div>
 
-    <p style="font-size: 17px; line-height: 1.7;">Use the command below:</p>
+    <div class="step">
+        <strong>4. View Anytime</strong>
+        <p>Use the command below to retrieve all details about the action.</p>
+    </div>
 
-    <code style="
-        background: #141414;
-        padding: 12px 16px;
-        border-radius: 8px;
-        display: inline-block;
-        font-size: 15px;
-        border: 1px solid #2b2b2b;">
-        /actiontag &lt;ActionTag&gt;
-    </code>
+    <!-- Command -->
+    <h2>Viewing an ActionTag</h2>
 
-    <p style="font-size: 16px; margin-top: 15px; opacity: 0.85;">
-        LazaBot will display a detailed summary including:
+    <code>/actiontag &lt;ActionTag&gt;</code>
+
+    <p style="font-size: 16px; margin-top: 15px;">
+        Displays full action details including:
         <br>• Action type  
         <br>• User  
         <br>• Moderator  
         <br>• Reason  
         <br>• Timestamp  
-        <br>• Additional metadata  
+        <br>• Metadata  
     </p>
 
-    </section>
+</section>
+
+                                                                                        </div>
