@@ -36,7 +36,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .news-header {
-            padding: 30px 30px 0;
+            padding: 30px;
         }
         .news-date {
             font-size: 0.9em;
@@ -71,6 +71,43 @@
             padding: 20px 0;
             border-top: 1px solid #d2d2d7;
         }
+        /* Responsive Styles for Mobile/PC */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            main {
+                padding: 20px 10px;
+            }
+            .news-article {
+                border-radius: 12px;
+                margin-bottom: 20px;
+            }
+            .news-header {
+                padding: 20px;
+            }
+            .news-title {
+                font-size: 1.6em;
+            }
+            .news-excerpt {
+                font-size: 1em;
+            }
+            footer {
+                font-size: 0.7em;
+                padding: 15px 0;
+            }
+        }
+        @media (min-width: 769px) {
+            /* PC/Desktop enhancements */
+            main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .news-article {
+                max-width: 800px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -80,7 +117,7 @@
     <main>
         <article class="news-article">
             <div class="news-header">
-                <div class="news-date">February 26, 2026</div>
+                <div class="news-date">February 25, 2026</div>
                 <h2 class="news-title">LazaBot Releases LU47.2: FlowControl Discontinued and Stability Improvements</h2>
                 <p class="news-excerpt">To ensure peak performance and reliability during the development hiatus, LazaBot has released LU47.2, featuring the discontinuation of the underutilized FlowControl feature and several bug fixes. This update streamlines the bot, reducing potential instability while maintaining core functionality.</p>
                 <p class="news-excerpt">FlowControl, introduced in LU29, has been removed due to low adoption and maintenance challenges. Bug fixes include resolutions for /warn command crashes, improved AFK status auto-removal, enhanced webhook logging, and general performance optimizations for features like Event-Based AutoRoles and Advanced Suggestion System.</p>
