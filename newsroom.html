@@ -3,88 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazaBot NewsRoom</title>
+    <title>LazaBot Newsroom</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
         }
-        h1 {
-            color: #007bff;
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #d2d2d7;
+            padding: 20px 0;
             text-align: center;
         }
-        .news-item {
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 600;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .news-article {
             background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .news-header {
+            padding: 30px 30px 0;
         }
         .news-date {
-            font-size: 1.1em;
-            color: #28a745;
+            font-size: 0.9em;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 10px;
         }
         .news-title {
-            font-size: 1.5em;
-            color: #dc3545; /* Red for discontinuation emphasis */
-            margin-bottom: 15px;
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0 0 20px;
         }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
+        .news-excerpt {
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin: 0 0 30px;
         }
-        code {
-            background-color: #f8f9fa;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: monospace;
+        .news-link {
+            color: #0071e3;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+        }
+        .news-link:hover {
+            text-decoration: underline;
         }
         footer {
             text-align: center;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #666;
+            color: #86868b;
+            font-size: 0.8em;
+            padding: 20px 0;
+            border-top: 1px solid #d2d2d7;
         }
     </style>
 </head>
 <body>
-    <h1>LazaBot NewsRoom</h1>
-    <p>Welcome to the LazaBot NewsRoom, your source for the latest updates, feature changes, and announcements. Stay tuned for developments during the hiatus and the big return in late March 2026.</p>
-
-    <div class="news-item">
-        <div class="news-date">February 26, 2026</div>
-        <div class="news-title">LU47.2 Released: FlowControl Discontinued + Bug Fixes</div>
-        <p>In our ongoing commitment to stability and performance during the hiatus, we've rolled out LU47.2. This update focuses on streamlining the bot by removing underutilized features and addressing key bugs.</p>
-        <ul>
-            <li><strong>FlowControl Discontinued</strong>: Originally introduced in LU29 (February 16, 2025) for advanced command flow and conditional logic, FlowControl has been fully removed. It was causing occasional instability and had low user adoption. This change reduces overhead, making LazaBot leaner and more reliable without impacting core moderation tools.</li>
-            <li><strong>Bug Fixes</strong>:
-                <ul>
-                    <li>Fixed a rare crash in <code>/warn</code> command related to permission hierarchies (building on LU47.1).</li>
-                    <li>Improved AFK status auto-removal: Now reliably clears when a user sends any message, preventing false positives.</li>
-                    <li>Minor webhook logging tweaks for better event tracking in high-traffic servers.</li>
-                    <li>General performance optimizations for faster response times on Event-Based AutoRoles and Advanced Suggestion System.</li>
-                </ul>
-            </li>
-        </ul>
-        <p>No new features added—focus remains on crash-proof reliability via AccessNode. All changes are live; restart your bot instance if needed. Join the support server for questions: discord.gg/pZbC5zJSCN.</p>
-    </div>
-
-    <!-- Placeholder for future news items -->
-    <div class="news-item">
-        <div class="news-date">Coming Soon: Late March 2026</div>
-        <div class="news-title">LazaBot Full Return – v48 Teasers</div>
-        <p>Stay tuned for the end of hiatus with fresh updates, potential new features, and more. Follow @LazaBotApp for announcements!</p>
-    </div>
-
+    <header>
+        <h1>LazaBot Newsroom</h1>
+    </header>
+    <main>
+        <article class="news-article">
+            <div class="news-header">
+                <div class="news-date">February 26, 2026</div>
+                <h2 class="news-title">LazaBot Releases LU47.2: FlowControl Discontinued and Stability Improvements</h2>
+                <p class="news-excerpt">To ensure peak performance and reliability during the development hiatus, LazaBot has released LU47.2, featuring the discontinuation of the underutilized FlowControl feature and several bug fixes. This update streamlines the bot, reducing potential instability while maintaining core functionality.</p>
+                <p class="news-excerpt">FlowControl, introduced in LU29, has been removed due to low adoption and maintenance challenges. Bug fixes include resolutions for /warn command crashes, improved AFK status auto-removal, enhanced webhook logging, and general performance optimizations for features like Event-Based AutoRoles and Advanced Suggestion System.</p>
+                <a href="https://discord.gg/pZbC5zJSCN" class="news-link">Read more in the support server →</a>
+            </div>
+        </article>
+        <!-- Additional articles can be added here for future updates -->
+    </main>
     <footer>
-        <p>LazaBot © 2026 | Developed by @thaseenabbut | Status: https://lazabot.betteruptime.com/ | GitHub: github.com/LazaBot/LazaBot</p>
+        <p>LazaBot © 2026 | Developed by @thaseenabbut | For the latest, follow @LazaBotApp on X or join the support server.</p>
     </footer>
 </body>
 </html>
