@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazaBot Advanced Suggestion System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #007bff;
+        }
+        .step {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #28a745;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .embed-mockup {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .button-mock {
+            background-color: #6c757d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .progress-bar {
+            background-color: #28a745;
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            width: 60%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>LazaBot Advanced Suggestion System</h1>
+    <p>A seamless, automated feature that turns any message in a designated channel into a polished, votable suggestion embed. No commands needed for submissions—just type and let LazaBot handle the rest. Fully integrated with moderation tools for spam-free ideas.</p>
+
+    <div class="step">
+        <h3>Step 1: Initial Setup</h3>
+        <p>Run the slash command to configure the system. This is a one-time admin-only step.</p>
+        <pre><code>/setup-suggestions</code></pre>
+        <ul>
+            <li><strong>Suggestion Channel</strong>: Select the channel (e.g., #suggestions) where messages will auto-convert to embeds.</li>
+            <li><strong>Start Discussion</strong>: Toggle enabled/disabled. If enabled, adds a "Start Discussion" button to spawn threads for feedback.</li>
+        </ul>
+        <p>Once set, LazaBot monitors the channel. No further commands required for users.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Submitting a Suggestion</h3>
+        <p>Any member types a simple message in the designated channel—no slash commands needed.</p>
+        <pre><code>Example: "Add a #meme-channel for fun?"</code></pre>
+        <p>LazaBot instantly:</p>
+        <ul>
+            <li>Deletes the raw text message (keeps channel tidy).</li>
+            <li>Converts it to a clean embed with author credit, timestamp, and unique ID (e.g., SUG-123).</li>
+            <li>Adds interactive buttons: 👍 (Upvote) and 👎 (Downvote).</li>
+            <li>If "Start Discussion" is enabled, includes a button to auto-spawn a thread (#suggestion-123-discussion).</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Voting & Real-Time Updates</h3>
+        <p>Users click buttons to vote. The embed updates dynamically:</p>
+        <div class="embed-mockup">
+            <strong>New Suggestion (SUG-123)</strong><br>
+            Author: @User<br>
+            "Add a #meme-channel for fun?"<br>
+            <div class="progress-bar">60% Approved (12 Upvotes / 8 Downvotes)</div>
+            <span class="button-mock">👍 Upvote</span>
+            <span class="button-mock">👎 Downvote</span>
+            <span class="button-mock">Start Discussion</span>
+        </div>
+        <ul>
+            <li><strong>Live Progress Bar</strong>: Visual % bar (e.g., green for approved, red for rejected) updates on every vote—no refresh needed.</li>
+            <li><strong>Thresholds</strong>: Optional auto-tags (e.g., "Hot" if >50% approve + 10 votes).</li>
+            <li><strong>Moderation</strong>: Mods react or use buttons (role-gated) to approve/reject (e.g., 👍 mod react = "Approved" tag).</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Discussion & Resolution</h3>
+        <p>Click "Start Discussion" → Instant thread for replies, keeping the main channel focused on voting.</p>
+        <ul>
+            <li>Mods review via reactions/buttons (no dedicated commands).</li>
+            <li>Integrates with AutoMod: Blocks toxic/duplicate suggestions pre-embed.</li>
+            <li>Export: Pull CSV logs of suggestions/votes via /export.</li>
+        </ul>
+        <p>All actions log via webhooks for audits. Anti-spam ensured by AccessNode pre-checks.</p>
+    </div>
+
+    <h2>Why It's Advanced</h2>
+    <p>Seamless text capture (no /suggest needed), button voting over emojis, live bars, and auto-threads make it superior to basic bots. Free, unlimited, and crash-proof.</p>
+
+    <footer>
+        <p>LazaBot © 2026</p>
+    </footer>
+</body>
+</html>
