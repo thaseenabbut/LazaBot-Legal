@@ -89,7 +89,7 @@
         <p>LazaBot instantly:</p>
         <ul>
             <li>Deletes the raw text message (keeps channel tidy).</li>
-            <li>Converts it to a clean embed with author credit, timestamp, and unique ID (e.g., SUG-123).</li>
+            <li>Converts it to a clean embed with author credit and vote percentage display.</li>
             <li>Adds interactive buttons: 👍 (Upvote) and 👎 (Downvote).</li>
             <li>If "Start Discussion" is enabled, includes a button to auto-spawn a thread (#suggestion-123-discussion).</li>
         </ul>
@@ -99,7 +99,7 @@
         <h3>Step 3: Voting & Real-Time Updates</h3>
         <p>Users click buttons to vote. The embed updates dynamically:</p>
         <div class="embed-mockup">
-            <strong>New Suggestion (SUG-123)</strong><br>
+            <strong>New Suggestion</strong><br>
             Author: @User<br>
             "Add a #meme-channel for fun?"<br>
             <div class="progress-bar">60% Approved (12 Upvotes / 8 Downvotes)</div>
@@ -110,7 +110,6 @@
         <ul>
             <li><strong>Live Progress Bar</strong>: Visual % bar (e.g., green for approved, red for rejected) updates on every vote—no refresh needed.</li>
             <li><strong>Thresholds</strong>: Optional auto-tags (e.g., "Hot" if >50% approve + 10 votes).</li>
-            <li><strong>Moderation</strong>: Mods react or use buttons (role-gated) to approve/reject (e.g., 👍 mod react = "Approved" tag).</li>
         </ul>
     </div>
 
@@ -120,7 +119,6 @@
         <ul>
             <li>Mods review via reactions/buttons (no dedicated commands).</li>
             <li>Integrates with AutoMod: Blocks toxic/duplicate suggestions pre-embed.</li>
-            <li>Export: Pull CSV logs of suggestions/votes via /export.</li>
         </ul>
         <p>All actions log via webhooks for audits. Anti-spam ensured by AccessNode pre-checks.</p>
     </div>
