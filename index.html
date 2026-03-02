@@ -145,11 +145,12 @@
       overflow: hidden;
       margin-bottom: 32px;
       opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
     }
 
-    .card-group:nth-of-type(1) { animation: fadeUp 0.6s ease 0.3s forwards; }
-    .card-group:nth-of-type(2) { animation: fadeUp 0.6s ease 0.4s forwards; }
-    .card-group:nth-of-type(3) { animation: fadeUp 0.6s ease 0.5s forwards; }
+    .card-group.delay-1 { animation-delay: 0.3s; }
+    .card-group.delay-2 { animation-delay: 0.4s; }
+    .card-group.delay-3 { animation-delay: 0.5s; }
 
     .link-item {
       display: flex;
@@ -245,7 +246,7 @@
 
   <!-- Quick Actions -->
   <div class="section-label">Quick Actions</div>
-  <div class="card-group">
+  <div class="card-group delay-1">
     <a class="link-item" href="https://discord.com/oauth2/authorize?client_id=938803094291116082" target="_blank">
       <div class="link-left">
         <div class="icon-wrap blue">
@@ -286,6 +287,115 @@
       <div class="link-left">
         <div class="icon-wrap gray">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Follow on X</div>
+          <div class="link-desc">@LazaBotApp</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="https://lazabot.betteruptime.com" target="_blank">
+      <div class="link-left">
+        <div class="icon-wrap green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Uptime Status</div>
+          <div class="link-desc">Check current service health</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <!-- Resources -->
+  <div class="section-label">Resources</div>
+  <div class="card-group delay-2">
+    <a class="link-item" href="accessnode.html">
+      <div class="link-left">
+        <div class="icon-wrap teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div>
+          <div class="link-text">AccessNode</div>
+          <div class="link-desc">About LazaBot's infrastructure</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="suggestionsystem.html">
+      <div class="link-left">
+        <div class="icon-wrap indigo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Suggestion System</div>
+          <div class="link-desc">Submit and track feature requests</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="newsroom.html">
+      <div class="link-left">
+        <div class="icon-wrap orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">NewsRoom</div>
+          <div class="link-desc">Latest updates and announcements</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="date.html">
+      <div class="link-left">
+        <div class="icon-wrap purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Release Timeline</div>
+          <div class="link-desc">Version history and milestones</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <!-- Legal -->
+  <div class="section-label">Legal</div>
+  <div class="card-group delay-3">
+    <a class="link-item" href="terms.html">
+      <div class="link-left">
+        <div class="icon-wrap gray">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Terms of Service</div>
+          <div class="link-desc">Usage rules and agreements</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="privacy.html">
+      <div class="link-left">
+        <div class="icon-wrap blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Privacy Policy</div>
+          <div class="link-desc">How we handle your data</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <footer>Copyright © 2026 LazaBot. All rights reserved.</footer>
+</div>
+</body>
+</html>
+l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </div>
         <div>
           <div class="link-text">Follow on X</div>
