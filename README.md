@@ -15,7 +15,6 @@ LazaBot is Designed to assist Discord servers with AutoMod, Leveling, Giveaways,
 - **AutoMod System** – Smart automated moderation to catch bad behavior in real-time.
 - **Ticket Support System** – Structured support ticket handling with full customization.
 - **Leveling System** – Reward active members with XP and role rewards.
-- **FlowControl** – Dynamic slowmode adjustments based on message activity.
 - **StarBoard** – Highlight popular messages in a dedicated channel.
 - **ActionTags** – Every moderation action is logged with a unique case ID.
 - **Giveaways & Games** – Create engaging giveaways and fun mini-games.
