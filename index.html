@@ -1,65 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazaBot Legal Information</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2em;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin: 15px 0;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LazaBot — Legal Information</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-2: #f0f0f2;
+      --border: rgba(0,0,0,0.08);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --warning-bg: #fff9e6;
+      --warning-border: #f5d567;
+      --warning-text: #7d5800;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 24px 80px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: #0d3b35;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    .logo-mark img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 5vw, 36px);
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Announcement Banner */
+    .announcement {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.15s forwards;
+    }
+
+    .announcement-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warning-text);
+      margin-bottom: 6px;
+    }
+
+    .announcement-label::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: #f5a623;
+      border-radius: 50%;
+    }
+
+    .announcement p {
+      font-size: 14px;
+      color: #5c4200;
+      line-height: 1.65;
+    }
+
+    .announcement p + p { margin-top: 6px; }
+
+    /* Link Grid */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      padding-left: 4px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.25s forwards;
+    }
+
+    .card-group {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 32px;
+      opacity: 0;
+    }
+
+    .card-group:nth-of-type(1) { animation: fadeUp 0.6s ease 0.3s forwards; }
+    .card-group:nth-of-type(2) { animation: fadeUp 0.6s ease 0.4s forwards; }
+    .card-group:nth-of-type(3) { animation: fadeUp 0.6s ease 0.5s forwards; }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: background 0.15s ease;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+
+    .link-item:last-child { border-bottom: none; }
+
+    .link-item:hover {
+      background: var(--surface-2);
+    }
+
+    .link-item:hover .chevron { opacity: 1; transform: translateX(0); }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .icon-wrap {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-wrap svg { width: 17px; height: 17px; }
+
+    .link-text { font-size: 15px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .link-desc { font-size: 12px; color: var(--text-secondary); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .chevron {
+      color: #c7c7cc;
+      opacity: 0.6;
+      transform: translateX(-3px);
+      transition: opacity 0.15s, transform 0.15s;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aeaeb2;
+      margin-top: 8px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.6s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Color palettes for icons */
+    .blue   { background: #e8f0fe; color: #1a73e8; }
+    .purple { background: #f3e8fd; color: #9334e9; }
+    .green  { background: #e6f9f0; color: #12b76a; }
+    .orange { background: #fff3e0; color: #f57c00; }
+    .red    { background: #fde8e8; color: #e53935; }
+    .teal   { background: #e0f5f5; color: #00897b; }
+    .gray   { background: #f0f0f2; color: #6e6e73; }
+    .indigo { background: #eef0fd; color: #3949ab; }
+  </style>
 </head>
 <body>
-    <h1>LazaBot Legal Information</h1>
-    <p style="text-align: center; font-size: 1.2em; margin: 20px 0;">
-        This is the Official repository for LazaBot’s Terms of Service (ToS) and Privacy Policy. All legal documents related to LazaBot are hosted here.
-    </p>
-    <section class="announcement">
-  <h2>LazaBot Announcement</h2>
-  <p>
-    LazaBot is currently on a short break. Development and updates will resume,
-    and the bot is expected to be fully back around <strong>late March 2026</strong>.
-  </p>
-  <p>
-    This pause helps ensure long-term stability, better performance, and improved
-    features moving forward.
-  </p>
-    </section>
-    <ul>
-        <li><a href="https://discord.com/oauth2/authorize?client_id=938803094291116082">Add LazaBot</a></li>
-        <li><a href="https://discord.gg/pZbC5zJSCN">Support Discord</a></li>
-        <li><a href="https://top.gg/bot/938803094291116082?s=0107b0e5fc487">Vote LazaBot on Top.gg</a></li>
-        <li><a href="https://x.com/LazaBotApp">Follow LazaBot on X</a></li>
-        <li><a href="https://lazabot.betteruptime.com">Check LazaBot's Uptime Status</a></li>
-        <li><a href="accessnode.html">About LazaBot's AccessNode</a></li>
-        <li><a href="suggestionsystem.html">LazaBot Suggestion System</a></li>
-        <li><a href="newsroom.html">LazaBot NewsRoom</a></li>
-        <li><a href="date.html">LazaBot Release Timeline</a></li>
-        <li><a href="terms.html">Terms of Service</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-    </ul>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-mark">
+      <img src="pictures/LazaBotlogo.png" alt="LazaBot Logo" />
+    </div>
+    <h1>LazaBot</h1>
+    <p class="subtitle">Official legal documents and resources for LazaBot — your trusted Discord automation companion.</p>
+  </div>
+
+  <!-- Announcement -->
+  <div class="announcement">
+    <div class="announcement-label">Service Update</div>
+    <p>LazaBot is currently on a short break. Development and updates will resume, and the bot is expected to be fully back around <strong>late March 2026</strong>.</p>
+    <p>This pause ensures long-term stability, better performance, and improved features going forward.</p>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="section-label">Quick Actions</div>
+  <div class="card-group">
+    <a class="link-item" href="https://discord.com/oauth2/authorize?client_id=938803094291116082" target="_blank">
+      <div class="link-left">
+        <div class="icon-wrap blue">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Add LazaBot</div>
+          <div class="link-desc">Invite to your server</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="https://discord.gg/pZbC5zJSCN" target="_blank">
+      <div class="link-left">
+        <div class="icon-wrap purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Support Discord</div>
+          <div class="link-desc">Get help and chat with the community</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="https://top.gg/bot/938803094291116082?s=0107b0e5fc487" target="_blank">
+      <div class="link-left">
+        <div class="icon-wrap orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Vote on Top.gg</div>
+          <div class="link-desc">Support LazaBot's ranking</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="https://x.com/LazaBotApp" target="_blank">
+      <div class="link-left">
+        <div class="icon-wrap gray">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Follow on X</div>
+          <div class="link-desc">@LazaBotApp</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="https://lazabot.betteruptime.com" target="_blank">
+      <div class="link-left">
+        <div class="icon-wrap green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Uptime Status</div>
+          <div class="link-desc">Check current service health</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <!-- Resources -->
+  <div class="section-label">Resources</div>
+  <div class="card-group">
+    <a class="link-item" href="accessnode.html">
+      <div class="link-left">
+        <div class="icon-wrap teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div>
+          <div class="link-text">AccessNode</div>
+          <div class="link-desc">About LazaBot's infrastructure</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="suggestionsystem.html">
+      <div class="link-left">
+        <div class="icon-wrap indigo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Suggestion System</div>
+          <div class="link-desc">Submit and track feature requests</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="newsroom.html">
+      <div class="link-left">
+        <div class="icon-wrap orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">NewsRoom</div>
+          <div class="link-desc">Latest updates and announcements</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="date.html">
+      <div class="link-left">
+        <div class="icon-wrap purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Release Timeline</div>
+          <div class="link-desc">Version history and milestones</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <!-- Legal -->
+  <div class="section-label">Legal</div>
+  <div class="card-group">
+    <a class="link-item" href="terms.html">
+      <div class="link-left">
+        <div class="icon-wrap gray">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Terms of Service</div>
+          <div class="link-desc">Usage rules and agreements</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="link-item" href="privacy.html">
+      <div class="link-left">
+        <div class="icon-wrap blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="link-text">Privacy Policy</div>
+          <div class="link-desc">How we handle your data</div>
+        </div>
+      </div>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <footer>Copyright © 2026 LazaBot. All rights reserved.</footer>
+</div>
 </body>
 </html>
