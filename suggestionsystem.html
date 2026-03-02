@@ -1,134 +1,531 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LazaBot Suggestion System: Turn any message into a clean, votable embed with live upvote/downvote buttons, real-time progress bars, and optional discussion threads. Setup in seconds with /setup-suggestions." />
-    <title>How to Setup LazaBot Suggestion System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        h1, h2 {
-            color: #007bff;
-        }
-        .step {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .step h3 {
-            margin-top: 0;
-            color: #28a745;
-        }
-        code {
-            background-color: #f8f9fa;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: monospace;
-        }
-        pre {
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-radius: 4px;
-            overflow-x: auto;
-        }
-        .embed-mockup {
-            background-color: #e9ecef;
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-            font-style: italic;
-        }
-        .button-mock {
-            background-color: #6c757d;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-right: 5px;
-        }
-        .progress-bar {
-            background-color: #28a745;
-            color: white;
-            padding: 5px;
-            border-radius: 4px;
-            width: 60%;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LazaBot Suggestion System Guide: Turn any message into a clean, votable embed with live upvote/downvote buttons, real-time progress bars, and optional discussion threads." />
+  <title>LazaBot — Suggestion System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-2: #f0f0f2;
+      --border: rgba(0,0,0,0.08);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #0071e3;
+      --green: #12b76a;
+      --green-bg: #e6f9f0;
+      --purple: #9334e9;
+      --purple-bg: #f3e8fd;
+      --blue-bg: #e8f0fe;
+      --orange: #f57c00;
+      --orange-bg: #fff3e0;
+      --indigo: #3949ab;
+      --indigo-bg: #eef0fd;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 24px 80px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* Header */
+    .header {
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--indigo-bg);
+      color: var(--indigo);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .badge svg { width: 12px; height: 12px; }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 12px;
+      opacity: 0;
+    }
+
+    .card.d1 { animation: fadeUp 0.6s ease 0.1s forwards; }
+    .card.d2 { animation: fadeUp 0.6s ease 0.18s forwards; }
+    .card.d3 { animation: fadeUp 0.6s ease 0.26s forwards; }
+    .card.d4 { animation: fadeUp 0.6s ease 0.34s forwards; }
+    .card.d5 { animation: fadeUp 0.6s ease 0.42s forwards; }
+    .card.d6 { animation: fadeUp 0.6s ease 0.5s forwards; }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px 14px;
+    }
+
+    .step-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .card-body {
+      padding: 0 20px 18px;
+    }
+
+    /* Command block */
+    .command-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1d1d1f;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 12px 0;
+    }
+
+    .command-block code {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      color: #a8ff78;
+      flex: 1;
+    }
+
+    .copy-hint {
+      font-size: 11px;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    /* Bullet list */
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .info-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-primary);
+      line-height: 1.55;
+    }
+
+    .info-list li .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* Divider inside card */
+    .card-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 20px;
+    }
+
+    /* Discord embed mockup */
+    .discord-mockup {
+      background: #2b2d31;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      border-left: 4px solid #5865f2;
+    }
+
+    .discord-mockup .embed-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .discord-mockup .embed-author {
+      font-size: 12px;
+      color: #b5bac1;
+      margin-bottom: 8px;
+    }
+
+    .discord-mockup .embed-text {
+      font-size: 13px;
+      color: #dbdee1;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .progress-wrap {
+      background: #1e1f22;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 22px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 60%;
+      background: linear-gradient(90deg, #12b76a, #3ddc97);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+    }
+
+    .progress-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .progress-right {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: #b5bac1;
+    }
+
+    .discord-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .discord-btn {
+      background: #4e5058;
+      color: #dbdee1;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .discord-btn.primary { background: #5865f2; color: white; }
+
+    /* Why it's advanced */
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 0;
+    }
+
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      opacity: 0;
+    }
+
+    .highlight-card.d7 { animation: fadeUp 0.6s ease 0.55s forwards; }
+    .highlight-card.d8 { animation: fadeUp 0.6s ease 0.6s forwards; }
+    .highlight-card.d9 { animation: fadeUp 0.6s ease 0.65s forwards; }
+    .highlight-card.d10 { animation: fadeUp 0.6s ease 0.7s forwards; }
+
+    .highlight-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 10px;
+    }
+    .highlight-icon svg { width: 18px; height: 18px; }
+
+    .highlight-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .highlight-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .section-wrap {
+      margin-bottom: 28px;
+      opacity: 0;
+    }
+
+    .section-wrap.ds1 { animation: fadeUp 0.5s ease 0.08s forwards; }
+    .section-wrap.ds2 { animation: fadeUp 0.5s ease 0.3s forwards; }
+    .section-wrap.ds3 { animation: fadeUp 0.5s ease 0.5s forwards; }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aeaeb2;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.75s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <h1>LazaBot Advanced Suggestion System</h1>
-    <p>A seamless, automated feature that turns any message in a designated channel into a polished, votable suggestion embed. No commands needed for submissions—just type and let LazaBot handle the rest. Fully integrated with moderation tools for spam-free ideas.</p>
+<div class="container">
 
-    <div class="step">
-        <h3>Step 1: Initial Setup</h3>
-        <p>Run the slash command to configure the system. This is a one-time admin-only step.</p>
-        <pre><code>/setup-suggestions</code></pre>
-        <ul>
-            <li><strong>Suggestion Channel</strong>: Select the channel (e.g., #suggestions) where messages will auto-convert to embeds.</li>
-            <li><strong>Start Discussion</strong>: Toggle enabled/disabled. If enabled, adds a "Start Discussion" button to spawn threads for feedback.</li>
-        </ul>
-        <p>Once set, LazaBot monitors the channel. No further commands required for users.</p>
+  <!-- Back -->
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    Back to LazaBot
+  </a>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Feature Guide
     </div>
+    <h1>Suggestion System</h1>
+    <p class="subtitle">Turn any message into a clean, votable embed with live upvote/downvote buttons, real-time progress bars, and optional discussion threads. Setup in seconds.</p>
+  </div>
 
-    <div class="step">
-        <h3>Step 2: Submitting a Suggestion</h3>
-        <p>Any member types a simple message in the designated channel—no slash commands needed.</p>
-        <pre><code>Example: "Add a #meme-channel for fun?"</code></pre>
-        <p>LazaBot instantly:</p>
-        <ul>
-            <li>Deletes the raw text message (keeps channel tidy).</li>
-            <li>Converts it to a clean embed with author credit and vote percentage display.</li>
-            <li>Adds interactive buttons: 👍 (Upvote) and 👎 (Downvote).</li>
-            <li>If "Start Discussion" is enabled, includes a button to auto-spawn a thread (#suggestion-123-discussion).</li>
-        </ul>
-    </div>
+  <!-- Setup Steps -->
+  <div class="section-wrap ds1">
+    <div class="section-label">Setup Guide</div>
 
-    <div class="step">
-        <h3>Step 3: Voting & Real-Time Updates</h3>
-        <p>Users click buttons to vote. The embed updates dynamically:</p>
-        <div class="embed-mockup">
-            <strong>New Suggestion</strong><br>
-            Author: @User<br>
-            "Add a #meme-channel for fun?"<br>
-            <div class="progress-bar">60% Approved (12 Upvotes / 8 Downvotes)</div>
-            <span class="button-mock">👍 Upvote</span>
-            <span class="button-mock">👎 Downvote</span>
-            <span class="button-mock">Start Discussion</span>
+    <div class="card d1">
+      <div class="card-header">
+        <div class="step-badge" style="background:#e8f0fe;color:#1a73e8;">1</div>
+        <div>
+          <div class="card-title">Initial Setup</div>
+          <div class="card-subtitle">One-time admin configuration — takes under a minute.</div>
         </div>
-        <ul>
-            <li><strong>Live Progress Bar</strong>: Visual % bar (e.g., green for approved, red for rejected) updates on every vote—no refresh needed.</li>
-            <li><strong>Thresholds</strong>: Optional auto-tags (e.g., "Hot" if >50% approve + 10 votes).</li>
+      </div>
+      <div class="card-body">
+        <div class="command-block">
+          <code>/setup-suggestions</code>
+          <span class="copy-hint">admin only</span>
+        </div>
+        <ul class="info-list">
+          <li><span class="dot"></span><div><strong>Suggestion Channel</strong> — Select the channel (e.g. #suggestions) where messages auto-convert to embeds.</div></li>
+          <li><span class="dot"></span><div><strong>Start Discussion</strong> — Toggle on to add a button that spawns a thread for feedback on each suggestion.</div></li>
+          <li><span class="dot"></span><div>Once set, LazaBot monitors the channel. No further commands needed for users.</div></li>
         </ul>
+      </div>
     </div>
 
-    <div class="step">
-        <h3>Step 4: Discussion & Resolution</h3>
-        <p>Click "Start Discussion" → Instant thread for replies, keeping the main channel focused on voting.</p>
-        <ul>
-            <li>Mods review via reactions/buttons (no dedicated commands).</li>
-            <li>Integrates with AutoMod: Blocks toxic/duplicate suggestions pre-embed.</li>
+    <div class="card d2">
+      <div class="card-header">
+        <div class="step-badge" style="background:#e6f9f0;color:#12b76a;">2</div>
+        <div>
+          <div class="card-title">Submitting a Suggestion</div>
+          <div class="card-subtitle">No slash commands — just type in the channel.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="command-block">
+          <code>"Add a #meme-channel for fun?"</code>
+        </div>
+        <ul class="info-list">
+          <li><span class="dot"></span>LazaBot deletes the raw message to keep the channel clean.</li>
+          <li><span class="dot"></span>Converts it into a polished embed with author credit and vote display.</li>
+          <li><span class="dot"></span>Adds interactive 👍 Upvote and 👎 Downvote buttons automatically.</li>
+          <li><span class="dot"></span>If Discussion is enabled, includes a button to spawn a dedicated thread.</li>
         </ul>
-        <p>All actions log via webhooks for audits. Anti-spam ensured by AccessNode pre-checks.</p>
+      </div>
     </div>
 
-    <h2>Why It's Advanced</h2>
-    <p>Seamless text capture (no /suggest needed), button voting over emojis, live bars, and auto-threads make it superior to basic bots. Free, unlimited, and crash-proof.</p>
+    <div class="card d3">
+      <div class="card-header">
+        <div class="step-badge" style="background:#f3e8fd;color:#9334e9;">3</div>
+        <div>
+          <div class="card-title">Voting & Live Updates</div>
+          <div class="card-subtitle">The embed updates in real time on every vote.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- Discord embed mockup -->
+        <div class="discord-mockup">
+          <div class="embed-title">💡 New Suggestion</div>
+          <div class="embed-author">Submitted by @User</div>
+          <div class="embed-text">"Add a #meme-channel for fun?"</div>
+          <div class="progress-wrap">
+            <div class="progress-fill">
+              <span class="progress-label">60% Approved</span>
+            </div>
+            <span class="progress-right">12 👍 / 8 👎</span>
+          </div>
+          <div class="discord-buttons">
+            <span class="discord-btn primary">👍 Upvote</span>
+            <span class="discord-btn">👎 Downvote</span>
+            <span class="discord-btn">💬 Start Discussion</span>
+          </div>
+        </div>
+        <ul class="info-list" style="margin-top:14px;">
+          <li><span class="dot"></span><strong>Live Progress Bar</strong> — Green for approved, red for rejected. Updates instantly, no refresh needed.</li>
+          <li><span class="dot"></span><strong>Auto-Tags</strong> — Optional "🔥 Hot" tag triggers if approval exceeds 50% with 10+ votes.</li>
+        </ul>
+      </div>
+    </div>
 
-    <footer>
-        <p>LazaBot © 2026</p>
-    </footer>
+    <div class="card d4">
+      <div class="card-header">
+        <div class="step-badge" style="background:#fff3e0;color:#f57c00;">4</div>
+        <div>
+          <div class="card-title">Discussion & Resolution</div>
+          <div class="card-subtitle">Keep voting clean, discussion organized.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="info-list">
+          <li><span class="dot"></span>Click "Start Discussion" → instant thread spawns for replies, keeping the main channel focused on voting only.</li>
+          <li><span class="dot"></span>Mods can review and resolve via buttons — no dedicated commands required.</li>
+          <li><span class="dot"></span>Integrates with AutoMod to block toxic or duplicate submissions before they become embeds.</li>
+          <li><span class="dot"></span>All actions are logged via webhooks for full audit trails. Anti-spam enforced by AccessNode pre-checks.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why it's advanced -->
+  <div class="section-wrap ds2">
+    <div class="section-label">Why It's Advanced</div>
+    <div class="highlight-grid">
+      <div class="highlight-card d7">
+        <div class="highlight-icon" style="background:#e8f0fe;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="highlight-title">No Commands Needed</div>
+        <div class="highlight-desc">Users just type — LazaBot handles everything else automatically.</div>
+      </div>
+      <div class="highlight-card d8">
+        <div class="highlight-icon" style="background:#e6f9f0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#12b76a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="highlight-title">Live Vote Bars</div>
+        <div class="highlight-desc">Real-time progress bars update on every vote cast — no refresh.</div>
+      </div>
+      <div class="highlight-card d9">
+        <div class="highlight-icon" style="background:#f3e8fd;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9334e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="highlight-title">Auto Threads</div>
+        <div class="highlight-desc">Discussion threads spawn instantly without cluttering the main channel.</div>
+      </div>
+      <div class="highlight-card d10">
+        <div class="highlight-icon" style="background:#fff3e0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="highlight-title">Spam-Free</div>
+        <div class="highlight-desc">AccessNode pre-checks block duplicates and toxic content before posting.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Copyright © 2026 LazaBot. All rights reserved.</footer>
+</div>
 </body>
-</html>
+    </html>
+    
