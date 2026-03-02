@@ -1,134 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LazaBot Newsroom – Latest news, LU updates, bug fixes, and development milestones. Stay informed on stability, features" />
-    <title>LazaBot Newsroom</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-        }
-        header {
-            background-color: #fff;
-            border-bottom: 1px solid #d2d2d7;
-            padding: 20px 0;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-            font-weight: 600;
-        }
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .news-article {
-            background-color: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .news-header {
-            padding: 30px;
-        }
-        .news-date {
-            font-size: 0.9em;
-            color: #86868b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-        .news-title {
-            font-size: 2em;
-            font-weight: 600;
-            margin: 0 0 20px;
-        }
-        .news-excerpt {
-            font-size: 1.1em;
-            line-height: 1.5;
-            margin: 0 0 30px;
-        }
-        .news-link {
-            color: #0071e3;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1em;
-        }
-        .news-link:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            color: #86868b;
-            font-size: 0.8em;
-            padding: 20px 0;
-            border-top: 1px solid #d2d2d7;
-        }
-        /* Responsive Styles for Mobile/PC */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            main {
-                padding: 20px 10px;
-            }
-            .news-article {
-                border-radius: 12px;
-                margin-bottom: 20px;
-            }
-            .news-header {
-                padding: 20px;
-            }
-            .news-title {
-                font-size: 1.6em;
-            }
-            .news-excerpt {
-                font-size: 1em;
-            }
-            footer {
-                font-size: 0.7em;
-                padding: 15px 0;
-            }
-        }
-        @media (min-width: 769px) {
-            /* PC/Desktop enhancements */
-            main {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .news-article {
-                max-width: 800px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LazaBot Newsroom – Latest news, LU updates, bug fixes, and development milestones." />
+  <title>LazaBot — Newsroom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-2: #f0f0f2;
+      --border: rgba(0,0,0,0.08);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #0071e3;
+      --orange: #f57c00;
+      --orange-bg: #fff3e0;
+      --blue: #1a73e8;
+      --blue-bg: #e8f0fe;
+      --green: #12b76a;
+      --green-bg: #e6f9f0;
+      --red: #e53935;
+      --red-bg: #fde8e8;
+      --purple: #9334e9;
+      --purple-bg: #f3e8fd;
+      --gray-bg: #f0f0f2;
+      --gray: #6e6e73;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 24px 80px;
+    }
+
+    .container { width: 100%; max-width: 640px; }
+
+    /* Back */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* Header */
+    .header {
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--orange-bg);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .badge svg { width: 12px; height: 12px; }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      padding-left: 4px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.12s forwards;
+    }
+
+    /* Article card */
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      opacity: 0;
+    }
+
+    .article-card.a1 { animation: fadeUp 0.6s ease 0.18s forwards; }
+    .article-card.a2 { animation: fadeUp 0.6s ease 0.26s forwards; }
+    .article-card.a3 { animation: fadeUp 0.6s ease 0.34s forwards; }
+
+    /* Article top bar */
+    .article-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px 0;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .article-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .article-date {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .article-new {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      background: var(--green-bg);
+      padding: 3px 9px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Article body */
+    .article-body {
+      padding: 14px 18px 18px;
+    }
+
+    .article-title {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+
+    .article-excerpt {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    /* Change list */
+    .change-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 12px 0 14px;
+    }
+
+    .change-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .change-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* Article footer */
+    .article-footer {
+      padding: 12px 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.15s;
+    }
+    .article-link:hover { gap: 9px; }
+    .article-link svg { width: 14px; height: 14px; }
+
+    /* Empty state for future articles */
+    .empty-state {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 20px;
+      text-align: center;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.26s forwards;
+    }
+
+    .empty-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--orange-bg);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .empty-icon svg { width: 22px; height: 22px; color: var(--orange); }
+
+    .empty-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .empty-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Follow card */
+    .follow-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.34s forwards;
+    }
+
+    .follow-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.15s;
+    }
+    .follow-card:hover { background: var(--surface-2); }
+
+    .follow-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .follow-icon svg { width: 18px; height: 18px; }
+
+    .follow-title { font-size: 13px; font-weight: 500; }
+    .follow-handle { font-size: 12px; color: var(--text-secondary); margin-top: 1px; }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aeaeb2;
+      margin-top: 8px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.45s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>LazaBot Newsroom</h1>
-    </header>
-    <main>
-        <article class="news-article">
-            <div class="news-header">
-                <div class="news-date">February 25, 2026</div>
-                <h2 class="news-title">LazaBot Releases LU47.2: FlowControl Discontinued and Stability Improvements</h2>
-                <p class="news-excerpt">To ensure peak performance and reliability during the development hiatus, LazaBot has released LU47.2, featuring the discontinuation of the underutilized FlowControl feature and several bug fixes. This update streamlines the bot, reducing potential instability while maintaining core functionality.</p>
-                <p class="news-excerpt">FlowControl, introduced in LU29, has been removed due to low adoption and maintenance challenges. Bug fixes include resolutions for /warn command crashes, improved AFK status auto-removal, enhanced webhook logging, and general performance optimizations for features like Event-Based AutoRoles and Advanced Suggestion System.</p>
-                <a href="https://discord.gg/pZbC5zJSCN" class="news-link">Read more in the support server →</a>
-            </div>
-        </article>
-        <!-- Additional articles can be added here for future updates -->
-    </main>
-    <footer>
-        <p>LazaBot © 2026 | Developed by @thaseenabbut | For the latest, follow @LazaBotApp on X or join the support server.</p>
-    </footer>
+<div class="container">
+
+  <!-- Back -->
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    Back to LazaBot
+  </a>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+      Official Updates
+    </div>
+    <h1>Newsroom</h1>
+    <p class="subtitle">Latest news, LU updates, bug fixes, and development milestones — straight from the LazaBot team.</p>
+  </div>
+
+  <!-- Latest -->
+  <div class="section-label">Latest</div>
+
+  <!-- Article 1 — LU47.2 -->
+  <div class="article-card a1">
+    <div class="article-top">
+      <div class="article-meta">
+        <span class="article-tag" style="background:var(--orange-bg);color:var(--orange);">LU47.2</span>
+        <span class="article-date">February 25, 2026</span>
+      </div>
+      <span class="article-new">Latest</span>
+    </div>
+    <div class="article-body">
+      <h2 class="article-title">FlowControl Discontinued &amp; Stability Improvements</h2>
+      <p class="article-excerpt">To ensure peak performance during the development hiatus, LU47.2 ships the discontinuation of the underutilized FlowControl feature alongside a batch of targeted bug fixes. The update streamlines the bot, reducing potential instability while keeping all core functionality intact.</p>
+      <ul class="change-list">
+        <li>
+          <span class="change-dot" style="background:var(--red);"></span>
+          <span><strong style="color:var(--text-primary);">FlowControl removed</strong> — introduced in LU29, discontinued due to low adoption and maintenance overhead.</span>
+        </li>
+        <li>
+          <span class="change-dot" style="background:var(--green);"></span>
+          <span><strong style="color:var(--text-primary);">/warn command crash</strong> resolved in high-volume servers.</span>
+        </li>
+        <li>
+          <span class="change-dot" style="background:var(--green);"></span>
+          <span><strong style="color:var(--text-primary);">AFK status auto-removal</strong> now works reliably across all edge cases.</span>
+        </li>
+        <li>
+          <span class="change-dot" style="background:var(--green);"></span>
+          <span><strong style="color:var(--text-primary);">Webhook logging</strong> enhanced for better delivery consistency.</span>
+        </li>
+        <li>
+          <span class="change-dot" style="background:var(--green);"></span>
+          <span>General performance optimizations for Event-Based AutoRoles and the Advanced Suggestion System.</span>
+        </li>
+      </ul>
+    </div>
+    <div class="article-footer">
+      <a class="article-link" href="https://discord.gg/pZbC5zJSCN" target="_blank">
+        Read more in the support server
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Empty state — more coming -->
+  <div class="empty-state">
+    <div class="empty-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+    </div>
+    <div class="empty-title">More updates on the way</div>
+    <div class="empty-desc">Future LU releases and announcements will appear here. Follow LazaBot to get notified first.</div>
+  </div>
+
+  <!-- Follow -->
+  <div class="section-label" style="opacity:0;animation:fadeUp 0.6s ease 0.3s forwards;">Stay Updated</div>
+  <div class="follow-row">
+    <a class="follow-card" href="https://x.com/LazaBotApp" target="_blank">
+      <div class="follow-icon" style="background:var(--gray-bg);">
+        <svg viewBox="0 0 24 24" fill="var(--gray)" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <div>
+        <div class="follow-title">Follow on X</div>
+        <div class="follow-handle">@LazaBotApp</div>
+      </div>
+    </a>
+    <a class="follow-card" href="https://discord.gg/pZbC5zJSCN" target="_blank">
+      <div class="follow-icon" style="background:var(--blue-bg);">
+        <svg viewBox="0 0 24 24" fill="var(--blue)" stroke="none"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028z"/></svg>
+      </div>
+      <div>
+        <div class="follow-title">Support Server</div>
+        <div class="follow-handle">discord.gg/pZbC5zJSCN</div>
+      </div>
+    </a>
+  </div>
+
+  <footer>Copyright © 2026 LazaBot. Developed by @thaseenabbut.</footer>
+
+</div>
 </body>
-</html>
+    </html>
+    
