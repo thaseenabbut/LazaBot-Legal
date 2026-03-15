@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LazaBot — Terms of Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --border-strong: rgba(0,0,0,0.12);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #aeaeb2;
+      --accent: #0071e3;
+      --red: #e53935;
+      --green: #12b76a;
+      --green-bg: #e6f9f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-nav {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .back-link svg { width: 15px; height: 15px; }
+    .nav-sep { color: var(--text-tertiary); font-size: 13px; }
+    .nav-title { font-size: 14px; color: var(--text-secondary); }
+
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 52px 24px 96px;
+    }
+
+    /* Header */
+    .doc-header {
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border-strong);
+      opacity: 0;
+      animation: fadeUp 0.55s ease forwards;
+    }
+    .doc-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 10px;
+    }
+    .doc-title {
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+    .doc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 12px;
+    }
+    .doc-meta-item {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .doc-meta-item svg { width: 13px; height: 13px; opacity: 0.5; }
+
+    /* TOC */
+    .toc-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.55s ease 0.07s forwards;
+    }
+    .toc-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { border-bottom: 1px solid var(--border); }
+    .toc-list li:last-child { border-bottom: none; }
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 4px;
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--accent);
+      transition: color 0.15s;
+    }
+    .toc-list a:hover { color: #005bb5; }
+    .toc-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      width: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Sections */
+    .doc-section { margin-bottom: 40px; opacity: 0; }
+    .doc-section.s1  { animation: fadeUp 0.5s ease 0.10s forwards; }
+    .doc-section.s2  { animation: fadeUp 0.5s ease 0.14s forwards; }
+    .doc-section.s3  { animation: fadeUp 0.5s ease 0.18s forwards; }
+    .doc-section.s4  { animation: fadeUp 0.5s ease 0.22s forwards; }
+    .doc-section.s5  { animation: fadeUp 0.5s ease 0.26s forwards; }
+    .doc-section.s6  { animation: fadeUp 0.5s ease 0.30s forwards; }
+    .doc-section.s7  { animation: fadeUp 0.5s ease 0.34s forwards; }
+    .doc-section.s8  { animation: fadeUp 0.5s ease 0.38s forwards; }
+    .doc-section.s9  { animation: fadeUp 0.5s ease 0.42s forwards; }
+    .doc-section.s10 { animation: fadeUp 0.5s ease 0.46s forwards; }
+    .doc-section.s11 { animation: fadeUp 0.5s ease 0.50s forwards; }
+    .doc-section.s12 { animation: fadeUp 0.5s ease 0.54s forwards; }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .section-body p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body strong { color: var(--text-primary); font-weight: 500; }
+    .section-body a { color: var(--accent); text-decoration: none; }
+    .section-body a:hover { text-decoration: underline; }
+
+    /* Blue bullet list */
+    .doc-list {
+      list-style: none;
+      margin: 10px 0 12px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .doc-list li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding-left: 18px;
+      position: relative;
+    }
+    .doc-list li::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .doc-list li strong { color: var(--text-primary); font-weight: 500; }
+
+    /* Red bullet list (prohibited) */
+    .prohibit-list {
+      list-style: none;
+      margin: 12px 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .prohibit-list li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding-left: 18px;
+      position: relative;
+    }
+    .prohibit-list li::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+    .prohibit-list li strong { color: var(--text-primary); font-weight: 500; }
+
+    /* Callout */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 13px 16px;
+      margin: 14px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .callout a { color: var(--accent); text-decoration: none; }
+    .callout a:hover { text-decoration: underline; }
+
+    /* Contact buttons */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 16px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+    .contact-btn:hover { background: #ebebed; }
+    .contact-btn svg { width: 16px; height: 16px; }
+
+    .acceptance {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-strong);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.58s forwards;
+    }
+    .acceptance strong { color: var(--text-primary); }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 36px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.62s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      LazaBot
+    </a>
+    <span class="nav-sep">/</span>
+    <span class="nav-title">Terms of Service</span>
+  </nav>
+
+  <div class="page">
+
+    <div class="doc-header">
+      <div class="doc-eyebrow">Legal Document</div>
+      <h1 class="doc-title">Terms of Service</h1>
+      <div class="doc-meta">
+        <span class="doc-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Effective March 15, 2026
+        </span>
+        <span class="doc-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          12 Sections
+        </span>
+      </div>
+    </div>
+
+    <div class="toc-block">
+      <div class="toc-label">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#s1"><span class="toc-num">1</span>Introduction</a></li>
+        <li><a href="#s2"><span class="toc-num">2</span>Acceptance of Terms</a></li>
+        <li><a href="#s3"><span class="toc-num">3</span>User Eligibility</a></li>
+        <li><a href="#s4"><span class="toc-num">4</span>Use of LazaBot</a></li>
+        <li><a href="#s5"><span class="toc-num">5</span>Prohibited Uses</a></li>
+        <li><a href="#s6"><span class="toc-num">6</span>Reporting Abuse</a></li>
+        <li><a href="#s7"><span class="toc-num">7</span>Ownership &amp; Intellectual Property</a></li>
+        <li><a href="#s8"><span class="toc-num">8</span>Data &amp; Privacy</a></li>
+        <li><a href="#s9"><span class="toc-num">9</span>Liability &amp; Disclaimers</a></li>
+        <li><a href="#s10"><span class="toc-num">10</span>Termination</a></li>
+        <li><a href="#s11"><span class="toc-num">11</span>Changes to These Terms</a></li>
+        <li><a href="#s12"><span class="toc-num">12</span>Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="doc-section s1" id="s1">
+      <div class="section-heading"><span class="section-num">1</span><h2 class="section-title">Introduction</h2></div>
+      <div class="section-body">
+        <p>Welcome to LazaBot. LazaBot is a Discord bot designed to assist servers with moderation, automation, and community management. By inviting, accessing, or using LazaBot in any capacity, you agree to be bound by these Terms of Service.</p>
+        <p>These Terms apply to all users — including server administrators, moderators, and regular members interacting with LazaBot in any Discord server. If you do not agree with any part of these Terms, please remove LazaBot from your server and discontinue use immediately.</p>
+      </div>
+    </div>
+
+    <div class="doc-section s2" id="s2">
+      <div class="section-heading"><span class="section-num">2</span><h2 class="section-title">Acceptance of Terms</h2></div>
+      <div class="section-body">
+        <p>By using LazaBot, you confirm that you have read, understood, and agreed to these Terms of Service, as well as Discord's own <a href="https://discord.com/terms" target="_blank">Terms of Service</a> and <a href="https://discord.com/guidelines" target="_blank">Community Guidelines</a>.</p>
+        <p>LazaBot is a third-party service and is not affiliated with, endorsed by, or officially connected to Discord Inc. in any way.</p>
+      </div>
+    </div>
+
+    <div class="doc-section s3" id="s3">
+      <div class="section-heading"><span class="section-num">3</span><h2 class="section-title">User Eligibility</h2></div>
+      <div class="section-body">
+        <p>To use LazaBot, you must meet all of the following requirements:</p>
+        <ul class="doc-list">
+          <li>You must be at least <strong>13 years old</strong>, consistent with Discord's minimum age requirement.</li>
+          <li>If you are under the age of majority in your region, you must have obtained <strong>parental or guardian consent</strong>.</li>
+          <li>Server administrators who invite or configure LazaBot must hold the appropriate Discord permissions to do so.</li>
+          <li>You must not be prohibited from using Discord or related services under any applicable laws.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="doc-section s4" id="s4">
+      <div class="section-heading"><span class="section-num">4</span><h2 class="section-title">Use of LazaBot</h2></div>
+      <div class="section-body">
+        <p>LazaBot is intended to be used as a server management and moderation tool. You agree to use LazaBot only for its intended purposes and in full compliance with all applicable laws and Discord's platform rules.</p>
+        <p>LazaBot may offer a web dashboard that requires Discord OAuth authentication. You are fully responsible for all actions taken through your account and any server you manage using LazaBot.</p>
+        <div class="callout">LazaBot's features — including AutoMod, Leveling, Ticket System, Suggestions, Reaction Roles, and more — are provided for lawful server management purposes only.</div>
+      </div>
+    </div>
+
+    <div class="doc-section s5" id="s5">
+      <div class="section-heading"><span class="section-num">5</span><h2 class="section-title">Prohibited Uses</h2></div>
+      <div class="section-body">
+        <p>You agree not to use LazaBot in any of the following ways. Violation may result in immediate removal from your server without notice:</p>
+        <ul class="prohibit-list">
+          <li><strong>Unauthorized purposes</strong> — Using LazaBot for anything beyond its intended server moderation and management functions.</li>
+          <li><strong>Spam or mass messaging</strong> — Configuring or exploiting LazaBot to flood channels, users, or servers with excessive or unsolicited messages.</li>
+          <li><strong>DM advertising</strong> — Using LazaBot to send unsolicited advertisements, promotions, or marketing content to users via direct messages.</li>
+          <li><strong>Harassment or abuse</strong> — Using LazaBot to target, harass, intimidate, or harm any individual or group.</li>
+          <li><strong>Malware or exploits</strong> — Attempting to introduce malicious code, exploit vulnerabilities, or interfere with LazaBot's normal operation.</li>
+          <li><strong>Circumventing restrictions</strong> — Attempting to bypass any access controls, rate limits, or permission systems including AccessNode.</li>
+          <li><strong>Illegal activities</strong> — Using LazaBot to facilitate any activity that violates applicable laws, regulations, or Discord's platform policies.</li>
+          <li><strong>Impersonation</strong> — Misrepresenting your identity or server affiliation when interacting with or configuring LazaBot.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="doc-section s6" id="s6">
+      <div class="section-heading"><span class="section-num">6</span><h2 class="section-title">Reporting Abuse</h2></div>
+      <div class="section-body">
+        <p>If you become aware of any abuse, exploitation, or misuse of LazaBot, please report it promptly. Include the server name, server ID, relevant user IDs, and a clear description of the incident.</p>
+        <div class="contact-row">
+          <a class="contact-btn" href="https://discord.gg/pZbC5zJSCN" target="_blank">
+            <svg viewBox="0 0 24 24" fill="#5865f2"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028z"/></svg>
+            Support Server
+          </a>
+          <a class="contact-btn" href="https://x.com/LazaBotApp" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            @LazaBotApp on X
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-section s7" id="s7">
+      <div class="section-heading"><span class="section-num">7</span><h2 class="section-title">Ownership &amp; Intellectual Property</h2></div>
+      <div class="section-body">
+        <p>All source code, systems, designs, branding, and documentation associated with LazaBot are proprietary. You are granted a limited, non-exclusive, non-transferable license to use LazaBot solely for its intended purpose.</p>
+        <p>You may not copy, modify, reverse-engineer, decompile, resell, or redistribute any part of LazaBot or its underlying systems without explicit written permission.</p>
+        <p>By using LazaBot, you grant LazaBot a limited license to display your server's name and icon solely for server count displays or promotional content on official LazaBot channels. This does not grant ownership rights over your content.</p>
+      </div>
+    </div>
+
+    <div class="doc-section s8" id="s8">
+      <div class="section-heading"><span class="section-num">8</span><h2 class="section-title">Data &amp; Privacy</h2></div>
+      <div class="section-body">
+        <p>LazaBot collects and processes certain data in order to provide its services, including server configuration data, moderation logs, and Discord user identifiers. When a server removes LazaBot, all associated server data is permanently deleted within <strong>30 days</strong> of removal, in compliance with Discord's Developer Policy.</p>
+        <div class="callout">For full details on what data is collected and how it is used, read our <a href="privacy.html">Privacy Policy →</a></div>
+      </div>
+    </div>
+
+    <div class="doc-section s9" id="s9">
+      <div class="section-heading"><span class="section-num">9</span><h2 class="section-title">Liability &amp; Disclaimers</h2></div>
+      <div class="section-body">
+        <p>LazaBot is provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind, either express or implied. We do not guarantee that LazaBot will be uninterrupted, error-free, or always available.</p>
+        <p>To the fullest extent permitted by applicable law, LazaBot and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of — or inability to use — LazaBot.</p>
+        <p>By using LazaBot, you agree to indemnify and hold harmless LazaBot and its developers from any claims, losses, or legal actions arising from your use of the service or your violation of these Terms.</p>
+      </div>
+    </div>
+
+    <div class="doc-section s10" id="s10">
+      <div class="section-heading"><span class="section-num">10</span><h2 class="section-title">Termination</h2></div>
+      <div class="section-body">
+        <p>LazaBot reserves the right to terminate, suspend, or restrict access to its services at any time, with or without notice, for any of the following reasons:</p>
+        <ul class="doc-list">
+          <li>Violation of these Terms of Service.</li>
+          <li>Violation of Discord's Terms of Service or Community Guidelines.</li>
+          <li>Conduct that is harmful to LazaBot, its users, or the broader community.</li>
+          <li>Any activity deemed inappropriate or abusive at the sole discretion of LazaBot's developers.</li>
+        </ul>
+        <p>Upon termination, your right to use LazaBot ceases immediately. Data handling following termination is governed by our Privacy Policy.</p>
+      </div>
+    </div>
+
+    <div class="doc-section s11" id="s11">
+      <div class="section-heading"><span class="section-num">11</span><h2 class="section-title">Changes to These Terms</h2></div>
+      <div class="section-body">
+        <p>We reserve the right to update or modify these Terms at any time. When changes are made, the effective date at the top of this document will be updated. Significant changes may also be announced through our official channels.</p>
+        <p>Your continued use of LazaBot following any changes constitutes your acceptance of the revised Terms. If you do not agree, you should remove LazaBot from your server and discontinue use.</p>
+      </div>
+    </div>
+
+    <div class="doc-section s12" id="s12">
+      <div class="section-heading"><span class="section-num">12</span><h2 class="section-title">Contact</h2></div>
+      <div class="section-body">
+        <p>If you have any questions, concerns, or feedback regarding these Terms of Service, please reach out through one of our official channels:</p>
+        <div class="contact-row">
+          <a class="contact-btn" href="https://discord.gg/pZbC5zJSCN" target="_blank">
+            <svg viewBox="0 0 24 24" fill="#5865f2"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026 13.83 13.83 0 0 0 1.226-1.963.074.074 0 0 0-.041-.104 13.175 13.175 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028z"/></svg>
+            Support Server
+          </a>
+          <a class="contact-btn" href="https://x.com/LazaBotApp" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            @LazaBotApp on X
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="acceptance">
+      By using LazaBot, you acknowledge that you have read and agree to these Terms of Service. <strong>Thank you for trusting LazaBot</strong> — we are committed to providing a reliable, safe, and high-quality experience.
+    </div>
+
+    <footer>Copyright © 2026 LazaBot. All rights reserved.</footer>
+  </div>
+</body>
+</html>
