@@ -1,3 +1,5 @@
+# LazaBot has been discontinued and is no longer actively maintained. Thank you to everyone who supported the project. (July 30th, 2026)
+
 # LazaBot ⚡
 
 A powerful and modular Discord bot Designed to assist Discord servers around the globe, ensuring a seamless moderation experience for diverse communities.
