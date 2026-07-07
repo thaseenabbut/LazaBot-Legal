@@ -1,4 +1,4 @@
-# LazaBot has been discontinued and is no longer actively maintained. Thank you to everyone who supported the project. (July 30th, 2026)
+# LazaBot has been discontinued and is no longer actively maintained. Thank you to everyone who supported the project. (June 30th, 2026)
 
 # LazaBot ⚡
 
